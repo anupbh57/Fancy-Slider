@@ -13,6 +13,7 @@ body {
             height: 100%;
             display: flex;
             justify-content: flex-end;
+            margin-right: 0;
         }
 
         .slider-cover {
@@ -22,16 +23,28 @@ body {
             margin: auto 0;
             margin-right: 0;
             align-items: center;
+            max-width: 50vw;
+            &::after {
+                content: "";
+                height: 100vh;
+                width: 100vw;
+                background: #2e2e2e54;
+                z-index: 2;
+                position: absolute;
+                top: 0;
+                left: 0;
+                backdrop-filter: blur(3px);
+            }
         }
         
         .slide {
             height: 200px;
-            width: 300px;
+            min-width: 300px;
             background-color: red;
             border-radius: 8px;
             background-size: cover;
             z-index: 99;
-            transition: all 1.5s ease-in-out;
+            transition: all .5s ease-in-out;
             &:hover {
                 
             }

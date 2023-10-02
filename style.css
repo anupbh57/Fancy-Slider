@@ -6,6 +6,7 @@ body #main .slider {
   height: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-right: 0;
 }
 body #main .slider-cover {
   display: flex;
@@ -15,15 +16,28 @@ body #main .slider-cover {
   margin: auto 0;
   margin-right: 0;
   align-items: center;
+  max-width: 50vw;
+}
+body #main .slider-cover::after {
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  background: rgba(46, 46, 46, 0.3294117647);
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
 }
 body #main .slide {
   height: 200px;
-  width: 300px;
+  min-width: 300px;
   background-color: red;
   border-radius: 8px;
   background-size: cover;
   z-index: 99;
-  transition: all 1.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 body #main .slide-active {
   position: absolute;
