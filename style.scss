@@ -2,28 +2,34 @@
 $backgrounds: "https://images.unsplash.com/photo-1695757429514-edf36f4c4e95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80", 
             "https://images.unsplash.com/photo-1682686581551-867e0b208bd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
             "https://images.unsplash.com/photo-1682686580452-37f1892ee5e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1975&q=80",
-            "https://images.unsplash.com/photo-1682687982134-2ac563b2228b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
+            "https://images.unsplash.com/photo-1682687982134-2ac563b2228b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "https://images.unsplash.com/photo-1682685796014-2f342188a635?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+            "https://images.unsplash.com/photo-1695418624985-fed3d4793edf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80";
 body {
 
     #main{
         height: 100vh;
         padding: 32px;
-        
+        display: flex;
+        justify-content: flex-end;
         .slider {
             height: 100%;
             display: flex;
-            justify-content: flex-end;
+            flex-direction: column;
+            justify-content: center;
             margin-right: 0;
+            row-gap: 16px;
         }
 
         .slider-cover {
             display: flex;
-            justify-content: flex-end;
             column-gap: 32px;
-            margin: auto 0;
             margin-right: 0;
             align-items: center;
-            max-width: 50vw;
+            max-width: 40vw;
+            overflow: scroll;
+            scroll-snap-type: x mandatory;
+            transition: transform 0.3s ease-in-out;
             &::after {
                 content: "";
                 height: 100vh;
@@ -37,6 +43,18 @@ body {
             }
         }
         
+        .slider-controls {
+            z-index: 2;
+            display: flex;
+            justify-content: flex-end;
+            column-gap: 16px;
+            .btn{
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
         .slide {
             height: 200px;
             min-width: 300px;
@@ -45,12 +63,13 @@ body {
             background-size: cover;
             z-index: 99;
             transition: all .5s ease-in-out;
+            scroll-snap-align: start;
             &:hover {
                 
             }
         }
 
-        .slide-active {
+        .active {
             position: absolute;
                 top: 0;
                 left: 0;
